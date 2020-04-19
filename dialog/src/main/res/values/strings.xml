@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">dialog</string>
+    <string name="dialoglib_ok">确定</string>
+    <string name="dialoglib_cancel">取消</string>
+    <string name="dialoglib_waitting">请稍候...</string>
+    <string name="dialoglib_year">年</string>
+    <string name="dialoglib_month">月</string>
+    <string name="dialoglib_day">日</string>
+    <string name="dialoglib_hour">时</string>
+    <string name="dialoglib_minute">分</string>
+    <string name="dialoglib_second">秒</string>
+</resources>

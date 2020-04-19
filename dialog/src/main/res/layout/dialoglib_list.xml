@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:background="@drawable/dialoglib_bg_white_radius_2">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"
+        android:padding="@dimen/dialoglib_padding">
+    </android.support.v7.widget.RecyclerView>
+
+</FrameLayout>

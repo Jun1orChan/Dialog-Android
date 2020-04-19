@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:background="@drawable/dialoglib_bg_white_radius_2"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/dialoglib_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="这是一个自定义内容的BottomDialog"/>
+    </LinearLayout>
+</FrameLayout>
