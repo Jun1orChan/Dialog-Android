@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 
 import org.jun1or.dialog.LoadingDialog;
-import com.istrong.dialog_android.R;
 
 import io.reactivex.Flowable;
 import io.reactivex.android.schedulers.AndroidSchedulers;

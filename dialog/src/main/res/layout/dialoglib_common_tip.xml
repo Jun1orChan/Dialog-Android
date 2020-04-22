@@ -29,7 +29,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"/>
 
-        <com.istrong.widget.view.AlphaTextView
+        <org.jun1or.widget.view.AlphaTextView
             android:id="@+id/tvCancel"
             style="@style/dialoglib_button"
             android:layout_width="wrap_content"
@@ -37,7 +37,7 @@
             android:clickable="true"
             android:text="@string/dialoglib_cancel"/>
 
-        <com.istrong.widget.view.AlphaTextView
+        <org.jun1or.widget.view.AlphaTextView
             android:id="@+id/tvOK"
             style="@style/dialoglib_button"
             android:layout_width="wrap_content"

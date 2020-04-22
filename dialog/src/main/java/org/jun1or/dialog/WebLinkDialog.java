@@ -34,7 +34,7 @@ public class WebLinkDialog extends MaterialDialog {
     }
 
     private void initViews(View view) {
-        mTvContent = view.findViewById(com.istrong.dialog.R.id.tvContent);
+        mTvContent = view.findViewById(R.id.tvContent);
 //        mTvContent.setMovementMethod(ScrollingMovementMethod.getInstance());
         mTvContent.setAutoLinkMask(Linkify.WEB_URLS);
         Spanned spanned = Html.fromHtml(mContent);

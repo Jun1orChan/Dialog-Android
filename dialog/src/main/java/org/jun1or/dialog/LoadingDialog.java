@@ -8,9 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.istrong.dialog.R;
 import org.jun1or.dialog.base.BaseDialogFragment;
-import com.istrong.widget.progress.JCircleProgress;
+import org.jun1or.widget.progress.JCircleProgress;
 
 public class LoadingDialog extends BaseDialogFragment {
 

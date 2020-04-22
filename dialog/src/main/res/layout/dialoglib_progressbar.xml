@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <com.istrong.widget.progress.HorizentalProgressBar
+    <org.jun1or.widget.progress.HorizentalProgressBar
         android:id="@+id/progressBar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dialoglib_progressbar_height"

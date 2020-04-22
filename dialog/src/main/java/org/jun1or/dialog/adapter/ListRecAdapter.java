@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.istrong.dialog.R;
+import org.jun1or.dialog.R;
 import org.jun1or.dialog.listener.OnItemClickListener;
 
 public class ListRecAdapter extends RecyclerView.Adapter<ListRecAdapter.ListItemViewHolder> {
@@ -30,13 +30,13 @@ public class ListRecAdapter extends RecyclerView.Adapter<ListRecAdapter.ListItem
     }
 
     @Override
-    public void onBindViewHolder(ListItemViewHolder holder, final int position) {
+    public void onBindViewHolder(final ListItemViewHolder holder, final int position) {
         holder.tvItemName.setText(mItemArray[position]);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mOnItemClickListener != null)
-                    mOnItemClickListener.onItemClick(position);
+                    mOnItemClickListener.onItemClick(holder.getLayoutPosition());
             }
         });
     }

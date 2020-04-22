@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import org.jun1or.dialog.base.BaseBottomDialogFragment;
-import com.istrong.dialog_android.R;
 
 public class CustomBottomDialog extends BaseBottomDialogFragment {
     

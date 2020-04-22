@@ -8,11 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.istrong.dialog.R;
 import org.jun1or.dialog.adapter.ListRecAdapter;
 import org.jun1or.dialog.base.BaseDialogFragment;
 import org.jun1or.dialog.listener.OnItemClickListener;
-import com.istrong.widget.divider.DividerItemDecoration;
+import org.jun1or.widget.divider.DividerItemDecoration;
 
 public class ListDialog extends BaseDialogFragment {
 

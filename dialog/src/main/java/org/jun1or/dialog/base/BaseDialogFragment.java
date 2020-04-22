@@ -19,7 +19,8 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.istrong.dialog.R;
+
+import org.jun1or.dialog.R;
 
 import java.util.UUID;
 

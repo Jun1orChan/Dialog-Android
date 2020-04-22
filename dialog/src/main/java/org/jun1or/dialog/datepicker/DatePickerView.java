@@ -14,7 +14,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 
-import com.istrong.dialog.R;
+import org.jun1or.dialog.R;
 
 import java.util.ArrayList;
 import java.util.List;

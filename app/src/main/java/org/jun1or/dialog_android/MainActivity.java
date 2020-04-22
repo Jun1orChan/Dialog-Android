@@ -16,7 +16,6 @@ import org.jun1or.dialog.ProgressBarDialog;
 import org.jun1or.dialog.datepicker.DatePickerDialog;
 import org.jun1or.dialog.listener.OnItemClickListener;
 import org.jun1or.dialog.listener.TimeResultHandler;
-import com.istrong.dialog_android.R;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

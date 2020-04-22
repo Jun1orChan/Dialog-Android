@@ -7,7 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.istrong.dialog.R;
+import org.jun1or.dialog.R;
+
 
 public abstract class BaseBottomDialogFragment extends BaseDialogFragment {
 

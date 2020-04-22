@@ -15,6 +15,6 @@ public class JApplication extends Application {
             return;
         }
         LeakCanary.install(this);
-        LeakCanary.enableDisplayLeakActivity(this);
+//        LeakCanary.enableDisplayLeakActivity(this);
     }
 }

@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
-import com.istrong.dialog.R;
+import org.jun1or.dialog.R;
 import org.jun1or.dialog.base.BaseBottomDialogFragment;
 import org.jun1or.dialog.listener.TimeResultHandler;
 
