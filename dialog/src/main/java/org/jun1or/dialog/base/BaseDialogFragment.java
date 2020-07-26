@@ -76,7 +76,6 @@ public abstract class BaseDialogFragment extends DialogFragment {
             //设置宽高
             WindowManager.LayoutParams layoutParams = window.getAttributes();
             layoutParams.width = (int) (getScreenWidth(window.getContext()) * mWidthAspect);
-//            Log.e("TAG", "layoutParams.width:" + layoutParams.width);
             layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
             //透明度
             layoutParams.dimAmount = mDimAmount;
@@ -116,8 +115,9 @@ public abstract class BaseDialogFragment extends DialogFragment {
     }
 
     public void show(final FragmentManager fragmentManager) {
-        if (fragmentManager == null)
+        if (fragmentManager == null) {
             return;
+        }
         if (isShowing()) {
             return;
         }
@@ -142,8 +142,15 @@ public abstract class BaseDialogFragment extends DialogFragment {
     @Override
     public void onDismiss(DialogInterface dialog) {
         super.onDismiss(dialog);
-        if (mOnDismissListener != null)
+        if (mOnDismissListener != null) {
             mOnDismissListener.onDismiss(dialog);
+        }
+    }
+
+    @Override
+    public void dismiss() {
+//        super.dismiss();
+        dismissAllowingStateLoss();
     }
 
     //获取设备屏幕高度
@@ -154,11 +161,13 @@ public abstract class BaseDialogFragment extends DialogFragment {
     @Override
     public void onDestroyView() {
         Dialog dialog = getDialog();
-        if (dialog != null)
+        if (dialog != null) {
             dialog.setCancelMessage(null);
+        }
         // https://codeday.me/bug/20180423/157579.html
-        if ((dialog != null) && getRetainInstance())
+        if ((dialog != null) && getRetainInstance()) {
             dialog.setDismissMessage(null);
+        }
         super.onDestroyView();
     }
 
