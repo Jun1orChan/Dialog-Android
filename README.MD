@@ -12,7 +12,7 @@
 1.项目build.gradle文件中添加
 
 ```gradle
-    implementation 'org.jun1or.baselib:dialog:1.0.1'
+    implementation 'org.jun1or.baselib:dialog:1.0.2'
  ```
 
 ## 使用
@@ -57,6 +57,10 @@
 - 实现 getDialogView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState);
 
 ## 版本记录
+
+### 1.0.2
+
+- 升级至AndroidX
 
 ### 1.0.0
 

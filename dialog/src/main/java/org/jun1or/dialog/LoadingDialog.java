@@ -1,16 +1,21 @@
 package org.jun1or.dialog;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+
 import org.jun1or.dialog.base.BaseDialogFragment;
 import org.jun1or.widget.progress.JCircleProgress;
 
+
+/**
+ * @author cwj
+ */
 public class LoadingDialog extends BaseDialogFragment {
 
     private TextView mTvText;
@@ -34,8 +39,9 @@ public class LoadingDialog extends BaseDialogFragment {
 
     @Override
     public void onDestroyView() {
-        if (mProgress != null)
+        if (mProgress != null) {
             mProgress.cancelAnimation();
+        }
         super.onDestroyView();
     }
 
@@ -47,8 +53,9 @@ public class LoadingDialog extends BaseDialogFragment {
      */
     public LoadingDialog loadingText(CharSequence loadingText) {
         mLoadingText = loadingText;
-        if (mTvText != null)
+        if (mTvText != null) {
             mTvText.setText(loadingText);
+        }
         return this;
     }
 }

@@ -2,8 +2,6 @@ package org.jun1or.dialog;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.text.Html;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
@@ -18,7 +16,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
+
+/**
+ * @author Administrator
+ */
 public class WebLinkDialog extends MaterialDialog {
 
     private TextView mTvContent;
@@ -35,7 +39,6 @@ public class WebLinkDialog extends MaterialDialog {
 
     private void initViews(View view) {
         mTvContent = view.findViewById(R.id.tvContent);
-//        mTvContent.setMovementMethod(ScrollingMovementMethod.getInstance());
         mTvContent.setAutoLinkMask(Linkify.WEB_URLS);
         Spanned spanned = Html.fromHtml(mContent);
         mTvContent.setText(getClickableHtml(spanned));
@@ -51,11 +54,23 @@ public class WebLinkDialog extends MaterialDialog {
         return this;
     }
 
+    /**
+     * 设置网页链接点击监听器
+     *
+     * @param onWebLinkClickListener
+     * @return
+     */
     public WebLinkDialog onWebLinkClick(OnWebLinkClickListener onWebLinkClickListener) {
         this.mOnWebLinkClickListener = onWebLinkClickListener;
         return this;
     }
 
+    /**
+     * 设置链接字体颜色
+     *
+     * @param color
+     * @return
+     */
     public WebLinkDialog webLinkColor(int color) {
         mWebLinkColor = color;
         return this;
@@ -96,6 +111,12 @@ public class WebLinkDialog extends MaterialDialog {
     }
 
     public interface OnWebLinkClickListener {
+        /**
+         * 网页链接被点击
+         *
+         * @param text
+         * @param urlSpan
+         */
         void onWebLinkClick(String text, URLSpan urlSpan);
     }
 }

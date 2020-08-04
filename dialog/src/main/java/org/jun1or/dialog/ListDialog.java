@@ -1,18 +1,23 @@
 package org.jun1or.dialog;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.jun1or.dialog.adapter.ListRecAdapter;
 import org.jun1or.dialog.base.BaseDialogFragment;
 import org.jun1or.dialog.listener.OnItemClickListener;
 import org.jun1or.widget.divider.DividerItemDecoration;
 
+
+/**
+ * @author Administrator
+ */
 public class ListDialog extends BaseDialogFragment {
 
     private ListRecAdapter mListRecAdapter;
@@ -28,16 +33,17 @@ public class ListDialog extends BaseDialogFragment {
     private void initViews(View view) {
         RecyclerView recList = (RecyclerView) view.findViewById(R.id.recList);
         recList.setHasFixedSize(true);
-        recList.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recList.setLayoutManager(new LinearLayoutManager(view.getContext()));
         recList.addItemDecoration(
-                new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL,
+                new DividerItemDecoration(view.getContext(), LinearLayoutManager.VERTICAL,
                         R.drawable.dialoglib_line_gray, false));
         recList.setAdapter(getListRecAdapter());
     }
 
     private ListRecAdapter getListRecAdapter() {
-        if (mListRecAdapter == null)
+        if (mListRecAdapter == null) {
             mListRecAdapter = new ListRecAdapter();
+        }
         return mListRecAdapter;
     }
 

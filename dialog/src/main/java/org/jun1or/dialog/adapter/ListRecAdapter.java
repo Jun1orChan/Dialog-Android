@@ -1,14 +1,19 @@
 package org.jun1or.dialog.adapter;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import org.jun1or.dialog.R;
 import org.jun1or.dialog.listener.OnItemClickListener;
 
+
+/**
+ * @author cwj
+ */
 public class ListRecAdapter extends RecyclerView.Adapter<ListRecAdapter.ListItemViewHolder> {
 
 
@@ -35,8 +40,9 @@ public class ListRecAdapter extends RecyclerView.Adapter<ListRecAdapter.ListItem
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mOnItemClickListener != null)
+                if (mOnItemClickListener != null) {
                     mOnItemClickListener.onItemClick(holder.getLayoutPosition());
+                }
             }
         });
     }

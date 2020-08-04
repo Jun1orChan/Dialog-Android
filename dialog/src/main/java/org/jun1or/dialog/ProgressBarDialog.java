@@ -1,16 +1,21 @@
 package org.jun1or.dialog;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+
 import org.jun1or.dialog.base.BaseDialogFragment;
 import org.jun1or.widget.progress.HorizentalProgressBar;
 
+
+/**
+ * @author Administrator
+ */
 public class ProgressBarDialog extends BaseDialogFragment {
 
     private HorizentalProgressBar mPbar = null;
@@ -53,10 +58,11 @@ public class ProgressBarDialog extends BaseDialogFragment {
         }
         mTvCancel = (TextView) view.findViewById(R.id.tvCancel);
         mTvCancel.setText(mCancelText);
-        if (mCancelClickListener != null)
+        if (mCancelClickListener != null) {
             mTvCancel.setOnClickListener(mCancelClickListener);
-        else
+        } else {
             mTvCancel.setVisibility(View.GONE);
+        }
     }
 
 
@@ -66,8 +72,9 @@ public class ProgressBarDialog extends BaseDialogFragment {
      * @param progress
      */
     public ProgressBarDialog progress(int progress) {
-        if (mPbar != null)
+        if (mPbar != null) {
             mPbar.setProgress(progress);
+        }
         return this;
     }
 
@@ -111,15 +118,17 @@ public class ProgressBarDialog extends BaseDialogFragment {
      */
     public ProgressBarDialog titleMsg(CharSequence msg) {
         mTitleMsg = msg;
-        if (mTvTitleMsg != null)
+        if (mTvTitleMsg != null) {
             mTvTitleMsg.setText(msg);
+        }
         return this;
     }
 
     public ProgressBarDialog cancelText(CharSequence cancelText) {
         mCancelText = cancelText;
-        if (mTvCancel != null)
+        if (mTvCancel != null) {
             mTvCancel.setText(cancelText);
+        }
         return this;
     }
 

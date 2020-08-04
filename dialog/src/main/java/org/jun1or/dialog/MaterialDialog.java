@@ -1,8 +1,6 @@
 package org.jun1or.dialog;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.DialogFragment;
 import android.text.TextUtils;
 import android.text.method.ScrollingMovementMethod;
 import android.util.TypedValue;
@@ -11,10 +9,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
+
+
 import org.jun1or.dialog.base.BaseDialogFragment;
 
 import java.lang.ref.WeakReference;
 
+/**
+ * @author cwj
+ */
 public class MaterialDialog extends BaseDialogFragment {
 
     private CharSequence mTitle;
@@ -49,22 +54,26 @@ public class MaterialDialog extends BaseDialogFragment {
 
     private void initViews(View view) {
         mTvTitle = (TextView) view.findViewById(R.id.tvTitle);
-        if (TextUtils.isEmpty(mTitle))
+        if (TextUtils.isEmpty(mTitle)) {
             mTvTitle.setVisibility(View.GONE);
-        else
+        } else {
             mTvTitle.setText(mTitle);
-        if (mTitleSize != -1)
+        }
+        if (mTitleSize != -1) {
             mTvTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, mTitleSize);
+        }
         if (mTitleColor != -1) {
             mTvTitle.setTextColor(mTitleColor);
         }
         mTvContent = (TextView) view.findViewById(R.id.tvContent);
         mTvContent.setMovementMethod(ScrollingMovementMethod.getInstance());
         mTvContent.setText(mContent);
-        if (mContentSize != -1)
+        if (mContentSize != -1) {
             mTvContent.setTextSize(TypedValue.COMPLEX_UNIT_SP, mContentSize);
-        if (mContentColor != -1)
+        }
+        if (mContentColor != -1) {
             mTvContent.setTextColor(mContentColor);
+        }
         mTvCancel = (TextView) view.findViewById(R.id.tvCancel);
         mTvOK = (TextView) view.findViewById(R.id.tvOK);
         if (mBtnSize != -1) {
@@ -73,17 +82,20 @@ public class MaterialDialog extends BaseDialogFragment {
         }
         mTvCancel.setOnClickListener(mBtnCancelClickListener == null ? new DefaultClickListener(this) : mBtnCancelClickListener);
         mTvOK.setOnClickListener(mBtnOKClickListener == null ? new DefaultClickListener(this) : mBtnOKClickListener);
-        if (mBtnCancelColor != -1)
+        if (mBtnCancelColor != -1) {
             mTvCancel.setTextColor(mBtnCancelColor);
+        }
         if (mBtnOKColor != -1) {
             mTvOK.setTextColor(mBtnOKColor);
         }
-        if (TextUtils.isEmpty(mCancelText))
+        if (TextUtils.isEmpty(mCancelText)) {
             mTvCancel.setVisibility(View.GONE);
-        else
+        } else {
             mTvCancel.setText(mCancelText);
-        if (!TextUtils.isEmpty(mOKText))
+        }
+        if (!TextUtils.isEmpty(mOKText)) {
             mTvOK.setText(mOKText);
+        }
     }
 
     public MaterialDialog title(CharSequence title) {
@@ -173,8 +185,9 @@ public class MaterialDialog extends BaseDialogFragment {
 
         @Override
         public void onClick(View v) {
-            if (mRefrence.get() != null)
+            if (mRefrence.get() != null) {
                 mRefrence.get().dismiss();
+            }
         }
     }
 }

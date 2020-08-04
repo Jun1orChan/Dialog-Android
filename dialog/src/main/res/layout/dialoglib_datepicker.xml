@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/dialoglib_white"
         android:orientation="horizontal"
-        android:paddingBottom="@dimen/dialoglib_textPadding"
-        android:paddingTop="@dimen/dialoglib_textPadding">
+        android:paddingTop="@dimen/dialoglib_textPadding"
+        android:paddingBottom="@dimen/dialoglib_textPadding">
 
         <TextView
             android:id="@+id/tvCancel"
@@ -19,12 +19,12 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dialoglib_bg_selector"
             android:text="@string/dialoglib_cancel"
-            android:textColor="@color/dialoglib_title"/>
+            android:textColor="@color/dialoglib_title" />
 
-        <android.support.v4.widget.Space
+        <Space
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <TextView
             android:id="@+id/tvSelect"
@@ -33,13 +33,13 @@
             android:layout_height="wrap_content"
             android:background="@drawable/dialoglib_bg_selector"
             android:text="@string/dialoglib_ok"
-            android:textColor="@color/dialoglib_title"/>
+            android:textColor="@color/dialoglib_title" />
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="@drawable/dialoglib_line_gray"/>
+        android:background="@drawable/dialoglib_line_gray" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -52,7 +52,7 @@
             android:id="@+id/pvYear"
             android:layout_width="0dp"
             android:layout_height="@dimen/dialoglib_datepicker_height"
-            android:layout_weight="2"/>
+            android:layout_weight="2" />
 
         <TextView
             android:id="@+id/tvYearText"
@@ -62,13 +62,13 @@
             android:gravity="center"
             android:text="@string/dialoglib_year"
             android:textColor="@color/dialoglib_title"
-            android:textSize="@dimen/dialoglib_content_textSize"/>
+            android:textSize="@dimen/dialoglib_content_textSize" />
 
         <org.jun1or.dialog.datepicker.DatePickerView
             android:id="@+id/pvMonth"
             android:layout_width="0dp"
             android:layout_height="@dimen/dialoglib_datepicker_height"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <TextView
             android:id="@+id/tvMonthText"
@@ -78,13 +78,13 @@
             android:gravity="center"
             android:text="@string/dialoglib_month"
             android:textColor="@color/dialoglib_title"
-            android:textSize="@dimen/dialoglib_content_textSize"/>
+            android:textSize="@dimen/dialoglib_content_textSize" />
 
         <org.jun1or.dialog.datepicker.DatePickerView
             android:id="@+id/pvDay"
             android:layout_width="0dp"
             android:layout_height="@dimen/dialoglib_datepicker_height"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <TextView
             android:id="@+id/tvDayText"
@@ -94,13 +94,13 @@
             android:gravity="center"
             android:text="@string/dialoglib_day"
             android:textColor="@color/dialoglib_title"
-            android:textSize="@dimen/dialoglib_content_textSize"/>
+            android:textSize="@dimen/dialoglib_content_textSize" />
 
         <org.jun1or.dialog.datepicker.DatePickerView
             android:id="@+id/pvHour"
             android:layout_width="0dp"
             android:layout_height="@dimen/dialoglib_datepicker_height"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <TextView
             android:id="@+id/tvHourText"
@@ -110,13 +110,13 @@
             android:gravity="center"
             android:text="@string/dialoglib_hour"
             android:textColor="@color/dialoglib_title"
-            android:textSize="@dimen/dialoglib_content_textSize"/>
+            android:textSize="@dimen/dialoglib_content_textSize" />
 
         <org.jun1or.dialog.datepicker.DatePickerView
             android:id="@+id/pvMinute"
             android:layout_width="0dp"
             android:layout_height="@dimen/dialoglib_datepicker_height"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <TextView
             android:id="@+id/tvMinuteText"
@@ -127,13 +127,13 @@
             android:gravity="center"
             android:text="@string/dialoglib_minute"
             android:textColor="@color/dialoglib_title"
-            android:textSize="@dimen/dialoglib_content_textSize"/>
+            android:textSize="@dimen/dialoglib_content_textSize" />
 
         <org.jun1or.dialog.datepicker.DatePickerView
             android:id="@+id/pvSecond"
             android:layout_width="0dp"
             android:layout_height="@dimen/dialoglib_datepicker_height"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <TextView
             android:id="@+id/tvSecondText"
@@ -144,6 +144,6 @@
             android:gravity="center"
             android:text="@string/dialoglib_second"
             android:textColor="@color/dialoglib_title"
-            android:textSize="@dimen/dialoglib_content_textSize"/>
+            android:textSize="@dimen/dialoglib_content_textSize" />
     </LinearLayout>
 </LinearLayout>

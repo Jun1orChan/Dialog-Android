@@ -3,11 +3,12 @@ package org.jun1or.dialog_android;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import org.jun1or.dialog.ListDialog;
 import org.jun1or.dialog.LoadingDialog;

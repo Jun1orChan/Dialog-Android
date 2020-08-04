@@ -3,11 +3,13 @@ package org.jun1or.dialog.datepicker;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+
+import androidx.annotation.Nullable;
 
 
 import org.jun1or.dialog.R;
@@ -19,6 +21,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * @author cwj
+ */
 public class DatePickerDialog extends BaseBottomDialogFragment {
 
 
@@ -73,12 +78,13 @@ public class DatePickerDialog extends BaseBottomDialogFragment {
     }
 
     public DatePickerDialog mode(int mode) {
-        if (mode > MODE_YEAR_MONTH_DAY_HOUR_MINUTE_SECOND)
+        if (mode > MODE_YEAR_MONTH_DAY_HOUR_MINUTE_SECOND) {
             this.mMode = MODE_YEAR_MONTH_DAY_HOUR_MINUTE_SECOND;
-        else if (mode < MODE_YEAR_MONTH_DAY)
+        } else if (mode < MODE_YEAR_MONTH_DAY) {
             this.mMode = MODE_YEAR_MONTH_DAY;
-        else
+        } else {
             this.mMode = mode;
+        }
         return this;
     }
 
@@ -265,18 +271,24 @@ public class DatePickerDialog extends BaseBottomDialogFragment {
     }
 
     private void initArrayList() {
-        if (mYear == null)
+        if (mYear == null) {
             mYear = new ArrayList<>();
-        if (mMonth == null)
+        }
+        if (mMonth == null) {
             mMonth = new ArrayList<>();
-        if (mDay == null)
+        }
+        if (mDay == null) {
             mDay = new ArrayList<>();
-        if (mHour == null)
+        }
+        if (mHour == null) {
             mHour = new ArrayList<>();
-        if (mMinute == null)
+        }
+        if (mMinute == null) {
             mMinute = new ArrayList<>();
-        if (mSecond == null)
+        }
+        if (mSecond == null) {
             mSecond = new ArrayList<>();
+        }
         mYear.clear();
         mMonth.clear();
         mDay.clear();

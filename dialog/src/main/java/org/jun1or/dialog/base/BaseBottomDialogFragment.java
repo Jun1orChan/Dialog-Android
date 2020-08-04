@@ -1,15 +1,19 @@
 package org.jun1or.dialog.base;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.Nullable;
+
 import org.jun1or.dialog.R;
 
 
+/**
+ * @author cwj
+ */
 public abstract class BaseBottomDialogFragment extends BaseDialogFragment {
 
     @Override
