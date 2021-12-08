@@ -1,0 +1,5 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="ExtraTranslation">
+    <string name="dialoglib_ok">OK</string>
+    <string name="dialoglib_cancel">Cancel</string>
+    <string name="dialoglib_waitting">Waitting...</string>
+</resources>

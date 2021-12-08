@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="dialoglib_white">#ffffff</color>
+    <color name="dialoglib_title">#AA000000</color>
+    <color name="dialoglib_content">#80000000</color>
+    <color name="dialoglib_bg_loading">#66000000</color>
+    <color name="dialoglib_gray">#B0B0B0</color>
+    <color name="dialoglib_bg_selector">#77B0B0B0</color>
+</resources>

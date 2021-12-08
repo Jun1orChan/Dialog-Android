@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/dialoglib_white"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/dialoglib_textPadding"
+        android:paddingBottom="@dimen/dialoglib_textPadding">
+
+        <TextView
+            android:id="@+id/tvCancel"
+            style="@style/dialoglib_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dialoglib_bg_selector"
+            android:text="@string/dialoglib_cancel"
+            android:textColor="@color/dialoglib_title" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tvSelect"
+            style="@style/dialoglib_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dialoglib_bg_selector"
+            android:text="@string/dialoglib_ok"
+            android:textColor="@color/dialoglib_title" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@drawable/dialoglib_line_gray" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/dialoglib_white"
+        android:orientation="horizontal"
+        android:padding="@dimen/dialoglib_padding">
+
+        <com.nd.dialog.datepicker.DatePickerView
+            android:id="@+id/pvYear"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dialoglib_datepicker_height"
+            android:layout_weight="1.1" />
+
+        <TextView
+            android:id="@+id/tvYearText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/dialoglib_year"
+            android:textColor="@color/dialoglib_title"
+            android:textSize="@dimen/dialoglib_content_textSize" />
+
+        <com.nd.dialog.datepicker.DatePickerView
+            android:id="@+id/pvMonth"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dialoglib_datepicker_height"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tvMonthText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/dialoglib_month"
+            android:textColor="@color/dialoglib_title"
+            android:textSize="@dimen/dialoglib_content_textSize" />
+
+        <com.nd.dialog.datepicker.DatePickerView
+            android:id="@+id/pvDay"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dialoglib_datepicker_height"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tvDayText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/dialoglib_day"
+            android:textColor="@color/dialoglib_title"
+            android:textSize="@dimen/dialoglib_content_textSize" />
+
+        <com.nd.dialog.datepicker.DatePickerView
+            android:id="@+id/pvHour"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dialoglib_datepicker_height"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tvHourText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/dialoglib_hour"
+            android:textColor="@color/dialoglib_title"
+            android:textSize="@dimen/dialoglib_content_textSize" />
+
+        <com.nd.dialog.datepicker.DatePickerView
+            android:id="@+id/pvMinute"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dialoglib_datepicker_height"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tvMinuteText"
+            style="@style/dialoglib_content"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/dialoglib_minute"
+            android:textColor="@color/dialoglib_title"
+            android:textSize="@dimen/dialoglib_content_textSize" />
+
+        <com.nd.dialog.datepicker.DatePickerView
+            android:id="@+id/pvSecond"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dialoglib_datepicker_height"
+            android:layout_weight="1" />
+
+        <!--   <TextView
+               android:id="@+id/tvSecondText"
+               style="@style/dialoglib_content"
+               android:layout_width="wrap_content"
+               android:layout_height="match_parent"
+               android:gravity="center"
+               android:text="@string/dialoglib_second"
+               android:textColor="@color/dialoglib_title"
+               android:textSize="@dimen/dialoglib_content_textSize"
+               android:visibility="gone" />-->
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,5 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="ExtraTranslation">
+    <string name="dialoglib_ok">確定</string>
+    <string name="dialoglib_cancel">取消</string>
+    <string name="dialoglib_waitting">請稍候...</string>
+</resources>

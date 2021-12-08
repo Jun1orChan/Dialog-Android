@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="dialoglib_anim_default">
+        <item name="android:windowEnterAnimation">@anim/dialoglib_scale_enter</item>
+        <item name="android:windowExitAnimation">@anim/dialoglib_scale_exit</item>
+    </style>
+
+    <style name="dialoglib_anim_bottom">
+        <item name="android:windowEnterAnimation">@anim/dialoglib_bottom_enter</item>
+        <item name="android:windowExitAnimation">@anim/dialoglib_bottom_exit</item>
+    </style>
+
+    <style name="dialoglib_title">
+        <item name="android:paddingTop">@dimen/dialoglib_textPadding</item>
+        <item name="android:paddingBottom">@dimen/dialoglib_textPadding</item>
+        <item name="android:paddingLeft">@dimen/dialoglib_textPadding</item>
+        <item name="android:paddingRight">@dimen/dialoglib_textPadding</item>
+        <item name="android:textColor">@color/dialoglib_title</item>
+        <item name="android:textSize">@dimen/dialoglib_title_textSize</item>
+        <item name="android:gravity">left</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="dialoglib_content">
+        <item name="android:gravity">left</item>
+        <item name="android:minHeight">@dimen/dialoglib_content_minHeight</item>
+        <item name="android:paddingTop">@dimen/dialoglib_textPadding</item>
+        <item name="android:paddingBottom">@dimen/dialoglib_textPadding</item>
+        <item name="android:paddingLeft">@dimen/dialoglib_textPadding</item>
+        <item name="android:paddingRight">@dimen/dialoglib_textPadding</item>
+        <item name="android:maxHeight">@dimen/dialoglib_content_maxHeight</item>
+        <item name="android:textColor">@color/dialoglib_content</item>
+        <item name="android:textSize">@dimen/dialoglib_content_textSize</item>
+        <item name="android:scrollbars">vertical</item>
+    </style>
+
+    <style name="dialoglib_button">
+        <item name="android:paddingTop">@dimen/dialoglib_textPadding</item>
+        <item name="android:paddingBottom">@dimen/dialoglib_textPadding</item>
+        <item name="android:paddingLeft">@dimen/dialoglib_padding</item>
+        <item name="android:paddingRight">@dimen/dialoglib_padding</item>
+        <item name="android:background">@drawable/dialoglib_bg_selector</item>
+        <item name="android:textSize">@dimen/dialoglib_content_textSize</item>
+        <item name="android:textColor">@color/dialoglib_content</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:minWidth">@dimen/dialoglib_button_minWidth</item>
+        <item name="android:minHeight">@dimen/dialoglib_button_minHeight</item>
+    </style>
+
+    <style name="dialoglib_dim_false" parent="@android:style/Theme.Dialog">
+        <item name="android:backgroundDimEnabled">false</item><!--activity不变暗-->
+    </style>
+</resources>

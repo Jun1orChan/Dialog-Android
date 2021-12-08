@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialoglib_bg_white_radius_2"
+    android:orientation="vertical"
+    android:padding="@dimen/dialoglib_padding">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        style="@style/dialoglib_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tvContent"
+        style="@style/dialoglib_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <com.nd.widget.view.AlphaTextView
+            android:id="@+id/tvCancel"
+            style="@style/dialoglib_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:text="@string/dialoglib_cancel" />
+
+        <com.nd.widget.view.AlphaTextView
+            android:id="@+id/tvOK"
+            style="@style/dialoglib_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:text="@string/dialoglib_ok" />
+    </LinearLayout>
+
+</LinearLayout>
