@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 31
     defaultConfig {
-        applicationId "org.nd.dialog_android"
+        applicationId "com.nd.dialog_android"
         minSdkVersion 21
         targetSdkVersion 31
         versionCode 1
