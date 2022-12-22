@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,11 +22,19 @@ import com.nd.widget.divider.DividerItemDecoration;
  */
 public class ListDialog extends BaseDialogFragment {
 
+
+    private static final String KEY_SAVE_STATE_ITEM_ARRAY = "save_state_item_array";
+
+
     private ListRecAdapter mListRecAdapter;
     private CharSequence[] mItemArray;
 
+
     @Override
     public View getDialogView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        if (savedInstanceState != null) {
+            mItemArray = savedInstanceState.getCharSequenceArray(KEY_SAVE_STATE_ITEM_ARRAY);
+        }
         View view = inflater.inflate(R.layout.dialoglib_list, null, false);
         initViews(view);
         return view;
@@ -38,6 +47,9 @@ public class ListDialog extends BaseDialogFragment {
         recList.addItemDecoration(
                 new DividerItemDecoration(view.getContext(), LinearLayoutManager.VERTICAL,
                         R.drawable.dialoglib_line_gray, false));
+        if (mItemArray != null) {
+            itemArray(mItemArray);
+        }
         recList.setAdapter(getListRecAdapter());
     }
 
@@ -59,4 +71,10 @@ public class ListDialog extends BaseDialogFragment {
         return this;
     }
 
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putCharSequenceArray(KEY_SAVE_STATE_ITEM_ARRAY, mItemArray);
+    }
 }

@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.text.HtmlCompat;
 
 
 /**
@@ -26,13 +27,29 @@ import androidx.annotation.Nullable;
  */
 public class WebLinkDialog extends MaterialDialog {
 
+    private static final String KEY_SAVE_STATE_CONTENT = "save_state_content";
+
+    private static final String KEY_SAVE_STATE_WEB_LINK_COLOR = "save_state_web_link_color";
+
     private TextView mTvContent;
     private String mContent;
     private OnWebLinkClickListener mOnWebLinkClickListener;
     private int mWebLinkColor = Color.BLUE;
 
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(KEY_SAVE_STATE_CONTENT, mContent);
+        outState.putInt(KEY_SAVE_STATE_WEB_LINK_COLOR, mWebLinkColor);
+    }
+
     @Override
     public View getDialogView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        if (savedInstanceState != null) {
+            mContent = savedInstanceState.getString(KEY_SAVE_STATE_CONTENT);
+            mWebLinkColor = savedInstanceState.getInt(KEY_SAVE_STATE_WEB_LINK_COLOR);
+        }
         View view = super.getDialogView(inflater, container, savedInstanceState);
         initViews(view);
         return view;
@@ -42,10 +59,12 @@ public class WebLinkDialog extends MaterialDialog {
         mTvContent = view.findViewById(R.id.tvContent);
         mTvContent.setAutoLinkMask(Linkify.WEB_URLS);
         Spanned spanned;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            spanned = Html.fromHtml(mContent, Html.FROM_HTML_MODE_LEGACY);
-        } else {
-            spanned = Html.fromHtml(mContent);
+        if (mContent == null) {
+            return;
+        }
+        spanned = HtmlCompat.fromHtml(mContent, HtmlCompat.FROM_HTML_MODE_LEGACY);
+        if (spanned == null) {
+            return;
         }
         mTvContent.setText(getClickableHtml(spanned));
         mTvContent.setMovementMethod(LinkMovementMethod.getInstance());

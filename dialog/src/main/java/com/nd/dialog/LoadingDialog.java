@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.nd.dialog.base.BaseDialogFragment;
@@ -18,12 +19,24 @@ import com.nd.widget.progress.JCircleProgress;
  */
 public class LoadingDialog extends BaseDialogFragment {
 
+    private static final String KEY_SAVE_STATE_LOADING_TEXT = "save_state_loading_text";
+
     private TextView mTvText;
     private JCircleProgress mProgress;
     private CharSequence mLoadingText;
 
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putCharSequence(KEY_SAVE_STATE_LOADING_TEXT, mLoadingText);
+    }
+
     @Override
     public View getDialogView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        if (savedInstanceState != null) {
+            mLoadingText = savedInstanceState.getCharSequence(KEY_SAVE_STATE_LOADING_TEXT);
+        }
         View view = inflater.inflate(R.layout.dialoglib_loading, null, false);
         initViews(view);
         return view;

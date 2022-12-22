@@ -2,7 +2,6 @@ package com.nd.dialog.datepicker;
 
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -12,6 +11,7 @@ import android.widget.TextView;
 
 
 import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.nd.dialog.R;
@@ -99,6 +99,18 @@ public class DatePickerDialog extends BaseBottomDialogFragment {
     private CharSequence mCancelText, mConfirmText;
 
     private int mCancelTextColor = -1, mConfirmTextColor = -1, mSeparatorColor = -1;
+
+
+    private static final String KEY_SAVE_STATE_START_TIME = "save_state_start_time";
+    private static final String KEY_SAVE_STATE_SELECTED_TIME = "save_state_selected_time";
+    private static final String KEY_SAVE_STATE_END_TIME = "save_state_end_time";
+    private static final String KEY_SAVE_STATE_LOOP = "save_state_loop";
+    private static final String KEY_SAVE_STATE_MODE = "save_state_mode";
+    private static final String KEY_SAVE_STATE_CANCEL_TEXT = "save_state_cancel_text";
+    private static final String KEY_SAVE_STATE_CONFIRM_TEXT = "save_state_confirm_text";
+    private static final String KEY_SAVE_STATE_CANCEL_TEXT_COLOR = "save_state_cancel_text_color";
+    private static final String KEY_SAVE_STATE_CONFIRM_TEXT_COLOR = "save_state_confirm_text_color";
+    private static final String KEY_SAVE_STATE_SEPARATOR_COLOR = "save_state_separator_color";
 
 
     /**
@@ -230,8 +242,36 @@ public class DatePickerDialog extends BaseBottomDialogFragment {
         return this;
     }
 
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putLong(KEY_SAVE_STATE_START_TIME, mStartCalendar.getTime().getTime());
+        outState.putLong(KEY_SAVE_STATE_SELECTED_TIME, mSelectedCalender.getTime().getTime());
+        outState.putLong(KEY_SAVE_STATE_END_TIME, mEndCalendar.getTime().getTime());
+        outState.putBoolean(KEY_SAVE_STATE_LOOP, mIsLoop);
+        outState.putInt(KEY_SAVE_STATE_MODE, mMode);
+        outState.putCharSequence(KEY_SAVE_STATE_CANCEL_TEXT, mCancelText);
+        outState.putCharSequence(KEY_SAVE_STATE_CONFIRM_TEXT, mConfirmText);
+        outState.putInt(KEY_SAVE_STATE_CANCEL_TEXT_COLOR, mCancelTextColor);
+        outState.putInt(KEY_SAVE_STATE_CONFIRM_TEXT_COLOR, mConfirmTextColor);
+        outState.putInt(KEY_SAVE_STATE_SEPARATOR_COLOR, mSeparatorColor);
+    }
+
     @Override
     public View getDialogView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        if (savedInstanceState != null) {
+            mStartCalendar.setTime(new Date(savedInstanceState.getLong(KEY_SAVE_STATE_START_TIME, Calendar.getInstance().getTime().getTime())));
+            mSelectedCalender.setTime(new Date(savedInstanceState.getLong(KEY_SAVE_STATE_SELECTED_TIME, Calendar.getInstance().getTime().getTime())));
+            mEndCalendar.setTime(new Date(savedInstanceState.getLong(KEY_SAVE_STATE_END_TIME, Calendar.getInstance().getTime().getTime())));
+            mIsLoop = savedInstanceState.getBoolean(KEY_SAVE_STATE_LOOP, false);
+            mMode = savedInstanceState.getInt(KEY_SAVE_STATE_MODE, MODE_YEAR_MONTH_DAY_HOUR_MINUTE);
+            mCancelText = savedInstanceState.getCharSequence(KEY_SAVE_STATE_CANCEL_TEXT);
+            mConfirmText = savedInstanceState.getCharSequence(KEY_SAVE_STATE_CONFIRM_TEXT);
+            mCancelTextColor = savedInstanceState.getInt(KEY_SAVE_STATE_CANCEL_TEXT_COLOR);
+            mConfirmTextColor = savedInstanceState.getInt(KEY_SAVE_STATE_CONFIRM_TEXT_COLOR);
+            mSeparatorColor = savedInstanceState.getInt(KEY_SAVE_STATE_SEPARATOR_COLOR);
+        }
         View view = inflater.inflate(R.layout.dialoglib_datepicker, null, false);
         initView(view);
         initData();
@@ -247,7 +287,7 @@ public class DatePickerDialog extends BaseBottomDialogFragment {
 
 
     private void initView(View view) {
-        mPvYear = (DatePickerView) view.findViewById(R.id.pvYear);
+        mPvYear = view.findViewById(R.id.pvYear);
         if (mSeparatorColor != -1) {
             ((TextView) view.findViewById(R.id.tvYearText)).setTextColor(mSeparatorColor);
             ((TextView) view.findViewById(R.id.tvMonthText)).setTextColor(mSeparatorColor);
@@ -269,13 +309,13 @@ public class DatePickerDialog extends BaseBottomDialogFragment {
         if (!TextUtils.isEmpty(mConfirmText)) {
             tvConfirm.setText(mConfirmText);
         }
-        mPvMonth = (DatePickerView) view.findViewById(R.id.pvMonth);
-        mPvDay = (DatePickerView) view.findViewById(R.id.pvDay);
-        mPvHour = (DatePickerView) view.findViewById(R.id.pvHour);
-        mPvMinute = (DatePickerView) view.findViewById(R.id.pvMinute);
-        mPvSecond = (DatePickerView) view.findViewById(R.id.pvSecond);
-        mTvCancel = (TextView) view.findViewById(R.id.tvCancel);
-        mTvSelect = (TextView) view.findViewById(R.id.tvSelect);
+        mPvMonth = view.findViewById(R.id.pvMonth);
+        mPvDay = view.findViewById(R.id.pvDay);
+        mPvHour = view.findViewById(R.id.pvHour);
+        mPvMinute = view.findViewById(R.id.pvMinute);
+        mPvSecond = view.findViewById(R.id.pvSecond);
+        mTvCancel = view.findViewById(R.id.tvCancel);
+        mTvSelect = view.findViewById(R.id.tvSelect);
 
         mTvCancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -287,7 +327,9 @@ public class DatePickerDialog extends BaseBottomDialogFragment {
         mTvSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mResultHandler.onTimeHandle(mSelectedCalender.getTime());
+                if (mResultHandler != null) {
+                    mResultHandler.onTimeHandle(mSelectedCalender.getTime());
+                }
                 dismiss();
             }
         });

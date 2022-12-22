@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">Dialog-Android</string>
+    <string name="app_name" translatable="false">Dialog-Android</string>
+    <string name="app_privacy_policy_tips" translatable="false"><Data><![CDATA[\u3000\u3000为了给您提供更优质的服务，%1$s将会使用您的个人信息，
+    <strong>请在使用前查看并同意<a href="https://www.baidu.com">《隐私政策》</a>
+    与<a href="https://www.baidu.com">《服务协议》</a>，特别是其中加粗条款。若选择拒绝，将无法使用我们的产品和服务。</strong>
+    <br>\u3000\u3000我们将收集您在使用本服务时的<strong>个人信息</strong>，进行必要的业务运营与评估，客户支持，
+    以及为您提供个性化的信息展示服务。您可在《隐私政策》中全面了解个人信息收集、使用和共享等情况。]]></Data></string>
 </resources>

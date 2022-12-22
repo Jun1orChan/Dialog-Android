@@ -49,7 +49,7 @@
         <item name="android:minHeight">@dimen/dialoglib_button_minHeight</item>
     </style>
 
-    <style name="dialoglib_dim_false" parent="@android:style/Theme.Dialog">
+    <style name="dialoglib_dim_false" parent="Theme.AppCompat.Light.Dialog">
         <item name="android:backgroundDimEnabled">false</item><!--activity不变暗-->
     </style>
 </resources>

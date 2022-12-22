@@ -9,7 +9,10 @@ import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +25,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StyleRes;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 
 import com.nd.dialog.R;
@@ -35,18 +40,30 @@ import java.util.UUID;
  */
 public abstract class BaseDialogFragment extends DialogFragment {
 
-    private static final String SAVED_DIALOG_STATE_TAG = "android:savedDialogState";
 
-    private static final float DEFAULT_DIMAMOUNT = 0.6F;
+    private static final String KEY_SAVE_STATE_GRAVITY = "save_state_gravity";
 
+    private static final String KEY_SAVE_STATE_DIM_AMOUNT = "save_state_dim_amount";
+
+    private static final String KEY_SAVE_STATE_CANCELABLE_ON_TOUCH_OUTSIDE = "save_state_cancelable_on_touch_outside";
+
+    private static final String KEY_SAVE_STATE_WIDTH_ASPECT = "save_state_width_aspect";
+
+    private static final String KEY_SAVE_STATE_ANIM_RES = "save_state_anim_res";
+
+    private static final String KEY_SAVE_STATE_TAG = "save_state_tag";
+
+    private static final String KEY_SAVE_STATE_DIM_BACKGROUND = "save_state_dim_background";
+
+
+    private static final float DEFAULT_DIM_AMOUNT = 0.6F;
     private int mGravity = Gravity.CENTER;
-    private float mDimAmount = DEFAULT_DIMAMOUNT;
+    private float mDimAmount = DEFAULT_DIM_AMOUNT;
     private boolean mIsCancelableOnTouchOutside = true;
     private float mWidthAspect = 0.75f;
     private int mAnimRes = -1;
     private String mTag;
     private DialogInterface.OnDismissListener mOnDismissListener;
-
 
     /**
      * 是否需要置灰，默认不置灰
@@ -83,10 +100,31 @@ public abstract class BaseDialogFragment extends DialogFragment {
 //        return R.style.dialoglib_dim_false;
 //    }
 
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(KEY_SAVE_STATE_GRAVITY, mGravity);
+        outState.putFloat(KEY_SAVE_STATE_DIM_AMOUNT, mDimAmount);
+        outState.putBoolean(KEY_SAVE_STATE_CANCELABLE_ON_TOUCH_OUTSIDE, mIsCancelableOnTouchOutside);
+        outState.putFloat(KEY_SAVE_STATE_WIDTH_ASPECT, mWidthAspect);
+        outState.putInt(KEY_SAVE_STATE_ANIM_RES, mAnimRes);
+        outState.putString(KEY_SAVE_STATE_TAG, mTag);
+        outState.putBoolean(KEY_SAVE_STATE_DIM_BACKGROUND, mDimBackground);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        setRetainInstance(true);
+        if (savedInstanceState != null) {
+            //还原
+            mGravity = savedInstanceState.getInt(KEY_SAVE_STATE_GRAVITY);
+            mDimAmount = savedInstanceState.getFloat(KEY_SAVE_STATE_DIM_AMOUNT);
+            mIsCancelableOnTouchOutside = savedInstanceState.getBoolean(KEY_SAVE_STATE_CANCELABLE_ON_TOUCH_OUTSIDE);
+            mWidthAspect = savedInstanceState.getFloat(KEY_SAVE_STATE_WIDTH_ASPECT);
+            mAnimRes = savedInstanceState.getInt(KEY_SAVE_STATE_ANIM_RES);
+            mTag = savedInstanceState.getString(KEY_SAVE_STATE_TAG);
+            mDimBackground = savedInstanceState.getBoolean(KEY_SAVE_STATE_DIM_BACKGROUND);
+        }
         ViewGroup containerView = (ViewGroup) inflater.inflate(R.layout.dialoglib_base, container, false);
         containerView.addView(getDialogView(inflater, container, savedInstanceState));
         return containerView;
@@ -213,6 +251,7 @@ public abstract class BaseDialogFragment extends DialogFragment {
         return mTag;
     }
 
+
     /**
      * 设置是否蒙版，默认：true
      *
@@ -231,14 +270,15 @@ public abstract class BaseDialogFragment extends DialogFragment {
         if (fragmentManager == null) {
             return;
         }
+        FragmentManagerProxy proxy = new FragmentManagerProxy(fragmentManager);
         if (isShowing()) {
             return;
         }
         if (!isAdded()) {
             try {
-                show(fragmentManager, getFragmentTag());
+                show(proxy, getFragmentTag());
             } catch (Exception e) {
-
+                e.printStackTrace();
             }
         }
         fragmentManager.executePendingTransactions();
@@ -272,7 +312,11 @@ public abstract class BaseDialogFragment extends DialogFragment {
 
     @Override
     public void dismiss() {
-        dismissAllowingStateLoss();
+        try {
+            dismissAllowingStateLoss();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -289,11 +333,12 @@ public abstract class BaseDialogFragment extends DialogFragment {
     @Override
     public int getTheme() {
         if (mDimBackground) {
-            return super.getTheme();
+            return R.style.Theme_AppCompat_Light_Dialog;
         } else {
             return R.style.dialoglib_dim_false;
         }
     }
+
 
     @Override
     public void onDestroyView() {
@@ -307,5 +352,4 @@ public abstract class BaseDialogFragment extends DialogFragment {
         }
         super.onDestroyView();
     }
-
 }

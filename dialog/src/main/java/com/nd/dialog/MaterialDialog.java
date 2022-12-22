@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
@@ -20,6 +21,22 @@ import java.lang.ref.WeakReference;
  * @author cwj
  */
 public class MaterialDialog extends BaseDialogFragment {
+
+
+    private static final String KEY_SAVE_STATE_TITLE = "save_state_title";
+    private static final String KEY_SAVE_STATE_CONTENT = "save_state_content";
+    private static final String KEY_SAVE_STATE_CANCEL_TEXT = "save_state_cancel_text";
+    private static final String KEY_SAVE_STATE_OK_TEXT = "save_state_ok_text";
+
+    private static final String KEY_SAVE_STATE_TITLE_SIZE = "save_state_title_size";
+    private static final String KEY_SAVE_STATE_CONTENT_SIZE = "save_state_content_size";
+    private static final String KEY_SAVE_STATE_BTN_SIZE = "save_state_btn_size";
+
+    private static final String KEY_SAVE_STATE_TITLE_COLOR = "save_state_title_color";
+    private static final String KEY_SAVE_STATE_CONTENT_COLOR = "save_state_content_color";
+    private static final String KEY_SAVE_STATE_BTN_CANCEL_COLOR = "save_state_btn_cancel_color";
+    private static final String KEY_SAVE_STATE_BTN_OK_COLOR = "save_state_btn_ok_color";
+
 
     private CharSequence mTitle;
     private CharSequence mContent;
@@ -41,9 +58,42 @@ public class MaterialDialog extends BaseDialogFragment {
 
     @Override
     public View getDialogView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        if (savedInstanceState != null) {
+            mTitle = savedInstanceState.getCharSequence(KEY_SAVE_STATE_TITLE);
+            mContent = savedInstanceState.getCharSequence(KEY_SAVE_STATE_CONTENT);
+            mCancelText = savedInstanceState.getCharSequence(KEY_SAVE_STATE_CANCEL_TEXT);
+            mOKText = savedInstanceState.getCharSequence(KEY_SAVE_STATE_OK_TEXT);
+
+            mTitleSize = savedInstanceState.getFloat(KEY_SAVE_STATE_TITLE_SIZE, -1);
+            mContentSize = savedInstanceState.getFloat(KEY_SAVE_STATE_CONTENT_SIZE, -1);
+            mBtnSize = savedInstanceState.getFloat(KEY_SAVE_STATE_BTN_SIZE, -1);
+
+            mTitleColor = savedInstanceState.getInt(KEY_SAVE_STATE_TITLE_COLOR, -1);
+            mContentColor = savedInstanceState.getInt(KEY_SAVE_STATE_CONTENT_COLOR, -1);
+            mBtnCancelColor = savedInstanceState.getInt(KEY_SAVE_STATE_BTN_CANCEL_COLOR, -1);
+            mBtnOKColor = savedInstanceState.getInt(KEY_SAVE_STATE_BTN_OK_COLOR, -1);
+        }
         View view = inflater.inflate(R.layout.dialoglib_common_tip, null, false);
         initViews(view);
         return view;
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putCharSequence(KEY_SAVE_STATE_TITLE, mTitle);
+        outState.putCharSequence(KEY_SAVE_STATE_CONTENT, mContent);
+        outState.putCharSequence(KEY_SAVE_STATE_CANCEL_TEXT, mCancelText);
+        outState.putCharSequence(KEY_SAVE_STATE_OK_TEXT, mOKText);
+
+        outState.putFloat(KEY_SAVE_STATE_TITLE_SIZE, mTitleSize);
+        outState.putFloat(KEY_SAVE_STATE_CONTENT_SIZE, mContentSize);
+        outState.putFloat(KEY_SAVE_STATE_BTN_SIZE, mBtnSize);
+
+        outState.putInt(KEY_SAVE_STATE_TITLE_COLOR, mTitleColor);
+        outState.putInt(KEY_SAVE_STATE_CONTENT_COLOR, mContentColor);
+        outState.putInt(KEY_SAVE_STATE_BTN_CANCEL_COLOR, mBtnCancelColor);
+        outState.putInt(KEY_SAVE_STATE_BTN_OK_COLOR, mBtnOKColor);
     }
 
     @Override

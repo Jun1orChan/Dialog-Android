@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.nd.dialog.base.BaseDialogFragment;
@@ -16,6 +17,11 @@ import com.nd.widget.progress.HorizentalProgressBar;
  * @author Administrator
  */
 public class ProgressBarDialog extends BaseDialogFragment {
+
+    private static final String KEY_SAVE_STATE_LEFT_MSG = "save_state_left_msg";
+    private static final String KEY_SAVE_STATE_RIGHT_MSG = "save_state_right_msg";
+    private static final String KEY_SAVE_STATE_TITLE = "save_state_title";
+    private static final String KEY_SAVE_STATE_CANCEL = "save_state_cancel";
 
     private HorizentalProgressBar mPbar = null;
     private TextView mTvLeftMsg = null;
@@ -32,7 +38,22 @@ public class ProgressBarDialog extends BaseDialogFragment {
     private View.OnClickListener mCancelClickListener;
 
     @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putCharSequence(KEY_SAVE_STATE_LEFT_MSG, mLeftMsg);
+        outState.putCharSequence(KEY_SAVE_STATE_RIGHT_MSG, mRightMsg);
+        outState.putCharSequence(KEY_SAVE_STATE_TITLE, mTitleMsg);
+        outState.putCharSequence(KEY_SAVE_STATE_CANCEL, mCancelText);
+    }
+
+    @Override
     public View getDialogView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        if (savedInstanceState != null) {
+            mLeftMsg = savedInstanceState.getCharSequence(KEY_SAVE_STATE_LEFT_MSG);
+            mRightMsg = savedInstanceState.getCharSequence(KEY_SAVE_STATE_RIGHT_MSG);
+            mTitleMsg = savedInstanceState.getCharSequence(KEY_SAVE_STATE_TITLE);
+            mCancelText = savedInstanceState.getCharSequence(KEY_SAVE_STATE_CANCEL);
+        }
         View inflate = inflater.inflate(R.layout.dialoglib_progressbar, null, false);
         initViews(inflate);
         setCanceledOnTouchOutside(false);
@@ -55,7 +76,7 @@ public class ProgressBarDialog extends BaseDialogFragment {
         if (TextUtils.isEmpty(mRightMsg)) {
             mTvRightMsg.setVisibility(View.GONE);
         }
-        mTvCancel = (TextView) view.findViewById(R.id.tvCancel);
+        mTvCancel = view.findViewById(R.id.tvCancel);
         mTvCancel.setText(mCancelText);
         if (mCancelClickListener != null) {
             mTvCancel.setOnClickListener(mCancelClickListener);
